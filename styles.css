@@ -18,6 +18,10 @@ main {
 }
 
 h1 {
+  font-size: 30px;
+}
+
+.player-icon {
   font-size: 40px;
 }
 
@@ -37,6 +41,10 @@ h1 {
   height: 100px;
   width: 100px;
   background-color: white;
+}
+
+.token {
+  font-size: 60px;
 }
 
 .player-1,
