@@ -1,3 +1,6 @@
+var player1 = new Player("one", "🍺", true);
+var player2 = new Player("two", "🍷");
+
 var winConditions = [
   [1, 2, 3],
   [4, 5, 6],
@@ -14,35 +17,76 @@ class Game {
     this.player1 = player1;
     this.player2 = player2;
     this.winConditions = winConditions;
-    // player1 moves and player2 moves
+    this.boardData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
 
-  // method for checking whose turn it is
+  // method to play turn
   takeTurn() {
-    // changes a player's turn from true to false
-    // include moves and switch take turn
-    // pass click event - determine where click happened (event.target)
-    // assign id (location) to a player
-    // define our move - object with number and player
-    // push to moves array
-    // check if win
+    placeToken();
+    checkWinCondition();
+    updateWinCount();
+    changePlayer();
+    displayNextTurn(); // method to change innerHTML of h2 in main section
+  }
+
+  placeToken() {
+    playTurn(); // event listeners on sqaures
+    updateBoardData(); // boardData gets updated - swaping numbers for tokens
+    addSquareIdToPlayerMoves(); // push sqaure id to player's moves array
+  }
+
+  playTurn() { // play using event.target on the DOM
+    if (this.player1.isTurn === true) {
+      // method to change innerHTML of the clicked square
+      // change to a beer token
+      // determine where click happened (event.target)
+      // assign id (location) to a player (update moves based on click)
+      // push to moves array
+    } else {
+      // method to change innerHTML of the clicked square
+      // change to a wine token
+    }
   }
 
   // method for determining when a game is won
   checkWinCondition() {
-    // win conditionals
-    // if else statement checking for rows, columns, and diagonals of 3
-    // loop through win conditions array
-      // part of conditions loop
-      // for each condition
-      // this.player1.moves[i].includes
-      // loop within a loop
-    // add way to detect for a draw
+    for (var i = 0; i < this.winConditions.length; i++) {
+      if (this.player1.moves.includes(this.winConditions[i])) {
+        this.player1.currentWinner = true;
+        this.player2.currentWinner = false;
+      } else if (this.player2.moves.includes(this.winConditions[i])) {
+        this.player2.currentWinner = true;
+        this.player1.currentWinner = false;
+      }
+    }
+    // call checkForDraw();
   }
 
-  // method to change each player's win count
+  checkForDraw() {
+    // checking if board is full but no win
+    // if no win condition is true and boardData is full of tokens
+  }
+
+  // method to change each player's win count *
   updateWinCount() {
-    player.this.wins++
+    if (this.player1.currentWinner === true) {
+      this.player1.win();
+      // update innerHTML of win count
+    } else if (this.player2.currentWinner === true) {
+      this.player2.win();
+      // update innerHTML of win count
+    }
+  }
+
+  // method to change whose turn it is *
+  changePlayer() {
+      if (this.player1.isTurn === true) { // refactor to this.player1.isTurn
+      this.player1.isTurn = false;
+      this.player2.isTurn = true;
+    } else if (this.player2.isTurn === true) { // refactor to this.player2.isTurn
+      this.player2.isTurn = false;
+      this.player1.isTurn = true;
+    }
   }
 
   //method to reset game board
@@ -51,12 +95,4 @@ class Game {
   }
 };
 
-////// Game class should include:
-// Two Player instances
-// A way to keep track of the data for the game board
-////// A way to keep track of which player’s turn it currently is
-////// A way to check the Game’s board data for win conditions
-////// A way to detect when a game is a draw (no one has won)
-// A way to save a winning Game’s board data to the correct
-// player’s wins array
-//// A way to reset the Game’s board to begin a new game
+var game = new Game(player1, player2);
