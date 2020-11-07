@@ -1,16 +1,16 @@
 class Player {
-  constructor(playerNum, token) {
+  constructor(playerNum, token, turn) {
     this.id = playerNum;
     this.token = token;
     this.wins = 0;
-    this.turn = false;
-    this.moves = [];
+    this.isTurn = turn || false;
+    this.moves = []; // array of numbers
+    this.currentWinner = false;
   }
 
-  // move this method to game class? updateWinCount
-  // win() {
-  //   this.wins++;
-  // }
+  win() {
+    this.wins++;
+  }
 
   saveWinsToStorage() {
     // add number of wins to local storage
@@ -20,8 +20,3 @@ class Player {
     // get num of wins from local storage
   }
 };
-
-// Player methods must include:
-// constructor properties id, token, wins
-// saveWinsToStorage
-// retrieveWinsFromStorage
