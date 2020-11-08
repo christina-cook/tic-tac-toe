@@ -8,6 +8,10 @@ main {
   height: 100%;
 }
 
+h1 {
+  font-size: 30px;
+}
+
 .main-section {
   display: flex;
   flex-direction: column;
@@ -17,8 +21,14 @@ main {
   width: 50%;
 }
 
-h1 {
-  font-size: 30px;
+.player-1,
+.player-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(#4ca1af, #c4e0e5);
+  width: 25%;
+  padding-top: 10%;
 }
 
 .player-icon {
@@ -43,16 +53,8 @@ h1 {
   background-color: white;
 }
 
+/* change cursor when you hover over a square */
+
 .token {
   font-size: 60px;
-}
-
-.player-1,
-.player-2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(#4ca1af, #c4e0e5);
-  width: 25%;
-  padding-top: 10%;
 }
