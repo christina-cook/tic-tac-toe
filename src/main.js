@@ -63,3 +63,12 @@ function updateCurrentPlayerMessage() {
     currentPlayerMessage.innerText = `It's ${player2.token}'s turn!`;
   }
 };
+
+//
+function updateNumberOnWinCount() {
+  if (player1.currentWinner === true) {
+    beerWinCount.innerText = `${player1.wins} wins`
+  } else {
+    wineWinCount.innerText = `${player2.wins} wins`
+  }
+};

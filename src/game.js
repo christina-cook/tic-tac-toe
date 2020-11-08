@@ -25,7 +25,6 @@ class Game {
   checkWinCondition() {
     for (var i = 0; i < this.winConditions.length; i++) {
       if (this.player1.moves.includes(this.winConditions[i])) {
-        debugger
         this.player1.currentWinner = true;
         this.player2.currentWinner = false;
       } else if (this.player2.moves.includes(this.winConditions[i])) {
@@ -41,14 +40,25 @@ class Game {
     // if no win condition is true and boardData is full of tokens
   }
 
-  // method to change each player's win count *
+  // This method changes each player's win count and calls a method
+  // to update the win count on the screen. *
   updateWinCount() {
     if (this.player1.currentWinner === true) {
       this.player1.win();
-      // update innerHTML of win count
+      updateNumberOnWinCount();
     } else if (this.player2.currentWinner === true) {
       this.player2.win();
-      // update innerHTML of win count
+      updateNumberOnWinCount();
+    }
+  }
+
+  // This method updates the win count number for each player if they are
+  // the current winner. *
+  updateNumberOnWinCount() {
+    if (player1.currentWinner === true) {
+      beerWinCount.innerText = `${player1.wins} wins`
+    } else {
+      wineWinCount.innerText = `${player2.wins} wins`
     }
   }
 
