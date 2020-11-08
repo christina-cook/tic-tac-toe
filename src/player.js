@@ -4,7 +4,7 @@ class Player {
     this.token = token;
     this.wins = 0;
     this.isTurn = turn || false;
-    this.moves = []; // array of numbers
+    this.moves = []; 
     this.currentWinner = false;
   }
 

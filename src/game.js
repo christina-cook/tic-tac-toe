@@ -10,34 +10,35 @@ var winConditions = [
   [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6]
-  ];
+];
 
 class Game {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
     this.winConditions = winConditions;
-    this.boardData = ["", "", "", "", "", "", "", "", ""];
+    this.boardData = [];
   }
 
 
   // method for determining when a game is won
-  checkWinCondition() {
-    for (var i = 0; i < this.winConditions.length; i++) {
-      if (this.player1.moves.includes(this.winConditions[i])) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
-      } else if (this.player2.moves.includes(this.winConditions[i])) {
-        this.player2.currentWinner = true;
-        this.player1.currentWinner = false;
-      }
-    }
-    // call checkForDraw();
-  }
+  // checkWinCondition() {
+  //   for (var i = 0; i < this.winConditions.length; i++) {
+  //     if (this.player1.moves.includes(this.winConditions[i])) {
+  //       this.player1.currentWinner = true;
+  //       this.player2.currentWinner = false;
+  //     } else if (this.player2.moves.includes(this.winConditions[i])) {
+  //       this.player2.currentWinner = true;
+  //       this.player1.currentWinner = false;
+  //     }
+  //   }
+  //   // call checkForDraw();
+  // }
+
 
   checkForDraw() {
     // checking if board is full but no win
-    // if no win condition is true and boardData is full of tokens
+    // if no win condition is true and boardData is full
   }
 
   // This method changes each player's win count and calls a method
@@ -52,17 +53,8 @@ class Game {
     }
   }
 
-  // This method updates the win count number for each player if they are
-  // the current winner. *
-  updateNumberOnWinCount() {
-    if (player1.currentWinner === true) {
-      beerWinCount.innerText = `${player1.wins} wins`
-    } else {
-      wineWinCount.innerText = `${player2.wins} wins`
-    }
-  }
-
-  // method to change whose turn it is *
+  // This method changes whose turn it is and calls a method to display the current
+  // player above the board. *
   changePlayer() {
       if (this.player1.isTurn === true) { // refactor to this.player1.isTurn
       this.player1.isTurn = false;
@@ -75,8 +67,10 @@ class Game {
     }
   }
 
-  //method to reset game board
+  // method to reset game board
   resetGameBoard() {
-    // use timeout to clear board after a certain time
+    if (this.boardData.length === 9) {
+      // use timeout to clear board after a certain time
+    }
   }
 };

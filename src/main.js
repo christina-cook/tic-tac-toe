@@ -1,5 +1,7 @@
 var currentGame = new Game(player1, player2);
 // how do I instantiate a new game each time the page loads and/or a new game starts?
+// or does this already happen with a global variable?
+
 
 // ~~~~~~~~~~~~~ Query Selectors ~~~~~~~~~~~~~
 
@@ -11,51 +13,38 @@ var boardSquares = document.querySelectorAll('.square');
 
 // ~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~
 
-gameBoard.addEventListener('click', playTurn);
-window.addEventListener('load', startNewGame);
-
+gameBoard.addEventListener('click', takeTurn);
 
 // ~~~~~~~~~~~~~ Event Handlers ~~~~~~~~~~~~~
 
-function startNewGame() {
-  // var newGame = new Game(player1, player2);
-  currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
-};
 
-// method to play turn
+// Helper function for playing a turn, checking win condition,
+// and switching players. *
 function takeTurn() {
-  // playTurn();
-  // placeToken();
-  // checkWinCondition();
-  // updateWinCount();
-  // displayNextTurn(); // method to change innerHTML of h2 in main section
+  playTurn(event);
+  currentGame.checkWinCondition(); // this function doesn't work yet
+  currentGame.changePlayer();
 };
 
 
 // This function adds a player's token into an empty square on the board
-// and then pushes the square's id to the player's moves array.
-// The function then calls the changePlayer method to switch players.
+// and then pushes the square's id to the player's moves array as well
+// as the array for board data. *
 function playTurn(event) {
-    if (currentGame.player1.isTurn === true) {
-      event.target.innerHTML = `<p class="token">🍺</p>`;
-      player1.moves.push(event.target.id);
-      //update board data
-    } else if (currentGame.player2.isTurn === true){
-      event.target.innerHTML = `<p class="token">🍷</p>`;
-      player2.moves.push(event.target.id);
-    }
-    console.log(event.target)
-    currentGame.changePlayer();
-    currentGame.checkWinCondition();
+  if (currentGame.player1.isTurn === true) {
+    event.target.innerHTML = `<p class="token">🍺</p>`;
+    player1.moves.push(event.target.id);
+    currentGame.boardData.push(event.target.id);
+  } else if (currentGame.player2.isTurn === true) {
+    event.target.innerHTML = `<p class="token">🍷</p>`;
+    player2.moves.push(event.target.id);
+    currentGame.boardData.push(event.target.id);
+  }
 };
 
-// updates the boardData with current player's move
-function updateBoardData() {
-
-};
 
 // This function changes the "It's 's turn!" message above the game board
-// to show who the current player is.
+// to show who the current player is. *
 function updateCurrentPlayerMessage() {
   if (player1.isTurn === true) {
     currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
@@ -64,7 +53,9 @@ function updateCurrentPlayerMessage() {
   }
 };
 
-//
+
+// This method updates the current winner's win count number
+// displayed on the page. *
 function updateNumberOnWinCount() {
   if (player1.currentWinner === true) {
     beerWinCount.innerText = `${player1.wins} wins`
