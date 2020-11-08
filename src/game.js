@@ -25,6 +25,7 @@ class Game {
   checkWinCondition() {
     for (var i = 0; i < this.winConditions.length; i++) {
       if (this.player1.moves.includes(this.winConditions[i])) {
+        debugger
         this.player1.currentWinner = true;
         this.player2.currentWinner = false;
       } else if (this.player2.moves.includes(this.winConditions[i])) {
@@ -56,9 +57,11 @@ class Game {
       if (this.player1.isTurn === true) { // refactor to this.player1.isTurn
       this.player1.isTurn = false;
       this.player2.isTurn = true;
+      updateCurrentPlayerMessage();
     } else if (this.player2.isTurn === true) { // refactor to this.player2.isTurn
       this.player2.isTurn = false;
       this.player1.isTurn = true;
+      updateCurrentPlayerMessage();
     }
   }
 

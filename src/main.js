@@ -31,25 +31,35 @@ function takeTurn() {
   // displayNextTurn(); // method to change innerHTML of h2 in main section
 };
 
-function placeToken() {
-  playTurn(); // event listeners on sqaures
-  updateBoardData(); // boardData gets updated - swaping numbers for tokens
-  addSquareIdToPlayerMoves(); // push sqaure id to player's moves array
-};
 
-
+// This function adds a player's token into an empty square on the board
+// and then pushes the square's id to the player's moves array.
+// The function then calls the changePlayer method to switch players.
 function playTurn(event) {
     if (currentGame.player1.isTurn === true) {
       event.target.innerHTML = `<p class="token">🍺</p>`;
       player1.moves.push(event.target.id);
+      //update board data
     } else if (currentGame.player2.isTurn === true){
       event.target.innerHTML = `<p class="token">🍷</p>`;
       player2.moves.push(event.target.id);
     }
     console.log(event.target)
     currentGame.changePlayer();
+    currentGame.checkWinCondition();
+};
 
-  //   // assign id (location) to a player (update moves based on click)
-  //   // push to moves array
-  // } else {
+// updates the boardData with current player's move
+function updateBoardData() {
+
+};
+
+// This function changes the "It's 's turn!" message above the game board
+// to show who the current player is.
+function updateCurrentPlayerMessage() {
+  if (player1.isTurn === true) {
+    currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
+  } else if (player2.isTurn === true) {
+    currentPlayerMessage.innerText = `It's ${player2.token}'s turn!`;
+  }
 };
