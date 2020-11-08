@@ -18,27 +18,29 @@ gameBoard.addEventListener('click', takeTurn);
 // ~~~~~~~~~~~~~ Event Handlers ~~~~~~~~~~~~~
 
 
-// Helper function for playing a turn, checking win condition,
-// and switching players. *
+// Helper function for playing a turn and switching players. *
 function takeTurn() {
   playTurn(event);
-  currentGame.checkWinCondition(); // this function doesn't work yet
   currentGame.changePlayer();
 };
 
 
 // This function adds a player's token into an empty square on the board
-// and then pushes the square's id to the player's moves array as well
-// as the array for board data. *
+// and then pushes the square's id to the player's moves array. *
+// It also calls 2 methods on the Game class:
+// - updating board data with player tokens *
+// - checking win conditions *
 function playTurn(event) {
   if (currentGame.player1.isTurn === true) {
     event.target.innerHTML = `<p class="token">🍺</p>`;
     player1.moves.push(event.target.id);
-    currentGame.boardData.push(event.target.id);
+    currentGame.updateBoardDataForPlayer1(event);
+    currentGame.checkWinConditionOfPlayer1();
   } else if (currentGame.player2.isTurn === true) {
     event.target.innerHTML = `<p class="token">🍷</p>`;
     player2.moves.push(event.target.id);
-    currentGame.boardData.push(event.target.id);
+    currentGame.updateBoardDataForPlayer2(event);
+    currentGame.checkWinConditionOfPlayer2();
   }
 };
 
