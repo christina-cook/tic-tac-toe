@@ -8,35 +8,49 @@
   <body>
     <main>
       <aside class="player-1">
-        <h2>🥃</h2>
-        <h3 class="win-count">wins</h3>
+        <h2 class="player-icon">🍺</h2>
+        <h3 class="beer-win-count">0 wins</h3>
       </aside>
       <section class="main-section">
         <h1>Tic Tac Toe</h1>
-        <h2>player's turn</h2>
+        <h2 class="current-player">It's 🍺's turn</h2>
         <article class="game-board">
-          <div class="square">
-            <p class="token">🍷</p>
+          <div class="square top-left" id="0">
+            <p class="token"></p>
           </div>
-          <div class="square">
-            <p class="token">🥃</p>
+          <div class="square top-center" id="1">
+            <p class="token"></p>
           </div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
+          <div class="square top-right" id="2">
+            <p class="token"></p>
+          </div>
+          <div class="square middle-left" id="3">
+            <p class="token"></p>
+          </div>
+          <div class="square middle-center" id="4">
+            <p class="token"></p>
+          </div>
+          <div class="square middle-right" id="5">
+            <p class="token"></p>
+          </div>
+          <div class="square bottom-left" id="6">
+            <p class="token"></p>
+          </div>
+          <div class="square bottom-center" id="7">
+            <p class="token"></p>
+          </div>
+          <div class="square bottom-right" id="8">
+            <p class="token"></p>
+          </div>
         </article>
       </section>
       <aside class="player-2">
-        <h2>🍷</h2>
-        <h3 class="win-count">wins</h3>
+        <h2 class="player-icon">🍷</h2>
+        <h3 class="wine-win-count">0 wins</h3>
       </aside>
     </main>
-    <script src="./src/game.js"></script>
     <script src="./src/player.js"></script>
+    <script src="./src/game.js"></script>
     <script src="./src/main.js"></script>
   </body>
 </html>
