@@ -113,7 +113,7 @@ class Game {
 
   // method to reset game board
   resetGameBoard() {
-    if (this.boardData.length === 9) {
+    if (this.player1.currentWinner === true || this.player2.currentWinner === true) {
       // use timeout to clear board after a certain time
     }
   }

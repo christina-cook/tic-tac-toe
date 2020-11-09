@@ -23,8 +23,17 @@ function takeTurn() {
   playTurn(event);
   currentGame.updateWinCount();
   currentGame.changePlayer();
+  displayWinner();
 };
 
+// This function displays the winner player above the board after a game is won. *
+function displayWinner() {
+  if (currentGame.player1.currentWinner === true) {
+    currentPlayerMessage.innerText = `${player1.token} wins!`;
+  } else if (currentGame.player2.currentWinner === true) {
+    currentPlayerMessage.innerText = `${player2.token} wins!`;
+  }
+}
 
 // This function adds a player's token into an empty square on the board
 // and then pushes the square's id to the player's moves array. *
