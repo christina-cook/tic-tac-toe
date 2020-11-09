@@ -9,11 +9,12 @@ var currentPlayerMessage = document.querySelector('.current-player');
 var beerWinCount = document.querySelector('.beer-win-count');
 var wineWinCount = document.querySelector('.wine-win-count');
 var gameBoard = document.querySelector('.game-board');
-// var boardSquares = document.querySelectorAll('.square');
+
 
 // ~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~
 
 gameBoard.addEventListener('click', takeTurn);
+
 
 // ~~~~~~~~~~~~~ Event Handlers ~~~~~~~~~~~~~
 
@@ -26,14 +27,16 @@ function takeTurn() {
   displayWinner();
 };
 
-// This function displays the winner player above the board after a game is won. *
+
+// This function displays the winner above the board after a game is won. *
 function displayWinner() {
   if (currentGame.player1.currentWinner === true) {
     currentPlayerMessage.innerText = `${player1.token} wins!`;
   } else if (currentGame.player2.currentWinner === true) {
     currentPlayerMessage.innerText = `${player2.token} wins!`;
   }
-}
+};
+
 
 // This function adds a player's token into an empty square on the board
 // and then pushes the square's id to the player's moves array. *
@@ -75,3 +78,12 @@ function updateNumberOnWinCount() {
     wineWinCount.innerText = `${player2.wins} wins`
   }
 };
+
+
+// This function works when called in the console but I can't figure out
+// where to call it in the JS files to show a tie.
+// function checkForDraw() {
+//   if (currentGame.player1.currentWinner === false && currentGame.player2.currentWinner === false && currentGame.boardData.length === 9) {
+//     currentPlayerMessage.innerText = "It's a tie!";
+//   }
+// };

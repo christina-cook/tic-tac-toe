@@ -23,29 +23,21 @@ class Game {
 // This method checks the win conditions based on tokens for player 1. *
   checkWinConditionOfPlayer1() {
     if (this.boardData[0].includes(player1.token) && this.boardData[1].includes(player1.token) && this.boardData[2].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false; // can probably remove all these falses
+      this.player1.currentWinner = true;
     } else if (this.boardData[3].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[5].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[6].includes(player1.token) && this.boardData[7].includes(player1.token) && this.boardData[8].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[0].includes(player1.token) && this.boardData[3].includes(player1.token) && this.boardData[6].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[1].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[7].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[2].includes(player1.token) && this.boardData[5].includes(player1.token) && this.boardData[8].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[0].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[8].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     } else if (this.boardData[2].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[6].includes(player1.token)) {
-        this.player1.currentWinner = true;
-        this.player2.currentWinner = false;
+      this.player1.currentWinner = true;
     }
   }
 
@@ -53,37 +45,24 @@ class Game {
 // This method checks the win conditions based on tokens for player 2. *
   checkWinConditionOfPlayer2() {
     if (this.boardData[0].includes(player2.token) && this.boardData[1].includes(player2.token) && this.boardData[2].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[3].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[5].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[6].includes(player2.token) && this.boardData[7].includes(player2.token) && this.boardData[8].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[0].includes(player2.token) && this.boardData[3].includes(player2.token) && this.boardData[6].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[1].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[7].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[2].includes(player2.token) && this.boardData[5].includes(player2.token) && this.boardData[8].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[0].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[8].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     } else if (this.boardData[2].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[6].includes(player2.token)) {
-        player2.currentWinner = true;
-        player1.currentWinner = false;
+      this.player2.currentWinner = true;
     }
   }
 
-
-  checkForDraw() {
-    // checking if board is full but no win
-    // if no win condition is true and boardData is full
-  }
 
   // This method changes each player's win count and calls a method
   // to update the win count on the screen. *
@@ -111,15 +90,8 @@ class Game {
     }
   }
 
-  // method to reset game board
-  resetGameBoard() {
-    if (this.player1.currentWinner === true || this.player2.currentWinner === true) {
-      // use timeout to clear board after a certain time
-    }
-  }
 
-
-// This method updates the board data array with player one's token.
+  // This method updates the board data array with player one's token. *
   updateBoardDataForPlayer1(event) {
     if (event.target.id === "0") {
       this.boardData.splice(0, 1, "🍺");
@@ -164,5 +136,14 @@ class Game {
       this.boardData.splice(8, 1, "🍷");
     }
   }
+
+  // trying to figure out a method to reset game board
+  // resetGameBoard() {
+  //   if (this.player1.currentWinner === true || this.player2.currentWinner === true) {
+  //   // use timeout to clear board after a certain time
+  //   } else if (this.player1.currentWinner === false && this.player2.currentWinner === false && this.boardData.length === 9) {
+  //   // clear board
+  //   }
+  // }
 
 };
