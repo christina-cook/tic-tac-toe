@@ -1,5 +1,5 @@
-var player1 = new Player("one", "🍺", true);
-var player2 = new Player("two", "🍷");
+var player1 = new Player("playerOne", "🍺", true);
+var player2 = new Player("playerTwo", "🍷");
 
 var winConditions = [
   [0, 1, 2],
@@ -18,60 +18,107 @@ class Game {
     this.player2 = player2;
     this.winConditions = winConditions;
     this.boardData = ["", "", "", "", "", "", "", "", ""];
+    this.activeGame = false;
   }
 
 // This method checks the win conditions based on tokens for player 1. *
-  checkWinConditionOfPlayer1() {
+  checkWinConditionOfPlayerOne() {
     if (this.boardData[0].includes(player1.token) && this.boardData[1].includes(player1.token) && this.boardData[2].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[3].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[5].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[6].includes(player1.token) && this.boardData[7].includes(player1.token) && this.boardData[8].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[0].includes(player1.token) && this.boardData[3].includes(player1.token) && this.boardData[6].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[1].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[7].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[2].includes(player1.token) && this.boardData[5].includes(player1.token) && this.boardData[8].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[0].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[8].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[2].includes(player1.token) && this.boardData[4].includes(player1.token) && this.boardData[6].includes(player1.token)) {
       this.player1.currentWinner = true;
+      this.activeGame = false;
     }
   }
+
 
 
 // This method checks the win conditions based on tokens for player 2. *
-  checkWinConditionOfPlayer2() {
+  checkWinConditionOfPlayerTwo() {
     if (this.boardData[0].includes(player2.token) && this.boardData[1].includes(player2.token) && this.boardData[2].includes(player2.token)) {
-      this.player2.currentWinner = true;
+      this.player2.currentWinner = true
+      this.activeGame = false;
     } else if (this.boardData[3].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[5].includes(player2.token)) {
-      this.player2.currentWinner = true;
+      this.player2.currentWinner = true
+      this.activeGame = false;
     } else if (this.boardData[6].includes(player2.token) && this.boardData[7].includes(player2.token) && this.boardData[8].includes(player2.token)) {
       this.player2.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[0].includes(player2.token) && this.boardData[3].includes(player2.token) && this.boardData[6].includes(player2.token)) {
       this.player2.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[1].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[7].includes(player2.token)) {
       this.player2.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[2].includes(player2.token) && this.boardData[5].includes(player2.token) && this.boardData[8].includes(player2.token)) {
       this.player2.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[0].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[8].includes(player2.token)) {
       this.player2.currentWinner = true;
+      this.activeGame = false;
     } else if (this.boardData[2].includes(player2.token) && this.boardData[4].includes(player2.token) && this.boardData[6].includes(player2.token)) {
-      this.player2.currentWinner = true;
+      this.player2.currentWinner = true
+      this.activeGame = false;
     }
   }
 
+  // checkWinConditionOfPlayer(player) {
+  //   if (this.boardData[0].includes(player.token) && this.boardData[1].includes(player.token) && this.boardData[2].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[3].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[5].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[6].includes(player.token) && this.boardData[7].includes(player.token) && this.boardData[8].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[0].includes(player.token) && this.boardData[3].includes(player.token) && this.boardData[6].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[1].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[7].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[2].includes(player.token) && this.boardData[5].includes(player.token) && this.boardData[8].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[0].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[8].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   } else if (this.boardData[2].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[6].includes(player.token)) {
+  //     this.player.currentWinner = true;
+  //     this.activeGame = false;
+  //   }
+  // }
 
   // This method changes each player's win count and calls a method
   // to update the win count on the screen. *
   updateWinCount() {
     if (this.player1.currentWinner === true) {
       this.player1.win();
+      this.player1.saveWinsToStorage();
       updateNumberOnWinCount();
     } else if (this.player2.currentWinner === true) {
       this.player2.win();
+      this.player2.saveWinsToStorage();
       updateNumberOnWinCount();
     }
   }
@@ -90,59 +137,72 @@ class Game {
     }
   }
 
+  // This method updates the board data array with the current player's token. *
+  updateBoardDataForPlayer(event, player) {
+    if (event.target.id === "0") {
+      this.boardData.splice(0, 1, `${player.token}`);
+    } else if (event.target.id === "1") {
+      this.boardData.splice(1, 1, `${player.token}`);
+    } else if (event.target.id === "2") {
+      this.boardData.splice(2, 1, `${player.token}`);
+    } else if (event.target.id === "3") {
+      this.boardData.splice(3, 1, `${player.token}`);
+    } else if (event.target.id === "4") {
+      this.boardData.splice(4, 1, `${player.token}`);
+    } else if (event.target.id === "5") {
+      this.boardData.splice(5, 1, `${player.token}`);
+    } else if (event.target.id === "6") {
+      this.boardData.splice(6, 1, `${player.token}`);
+    } else if (event.target.id === "7") {
+      this.boardData.splice(7, 1, `${player.token}`);
+    } else if (event.target.id === "8") {
+      this.boardData.splice(8, 1, `${player.token}`);
+    }
+  }
 
   // This method updates the board data array with player one's token. *
-  updateBoardDataForPlayer1(event) {
-    if (event.target.id === "0") {
-      this.boardData.splice(0, 1, "🍺");
-    } else if (event.target.id === "1") {
-      this.boardData.splice(1, 1, "🍺");
-    } else if (event.target.id === "2") {
-      this.boardData.splice(2, 1, "🍺");
-    } else if (event.target.id === "3") {
-      this.boardData.splice(3, 1, "🍺");
-    } else if (event.target.id === "4") {
-      this.boardData.splice(4, 1, "🍺");
-    } else if (event.target.id === "5") {
-      this.boardData.splice(5, 1, "🍺");
-    } else if (event.target.id === "6") {
-      this.boardData.splice(6, 1, "🍺");
-    } else if (event.target.id === "7") {
-      this.boardData.splice(7, 1, "🍺");
-    } else if (event.target.id === "8") {
-      this.boardData.splice(8, 1, "🍺");
-    }
-  }
+  // updateBoardDataForPlayer1(event) {
+  //   if (event.target.id === "0") {
+  //     this.boardData.splice(0, 1, "🍺");
+  //   } else if (event.target.id === "1") {
+  //     this.boardData.splice(1, 1, "🍺");
+  //   } else if (event.target.id === "2") {
+  //     this.boardData.splice(2, 1, "🍺");
+  //   } else if (event.target.id === "3") {
+  //     this.boardData.splice(3, 1, "🍺");
+  //   } else if (event.target.id === "4") {
+  //     this.boardData.splice(4, 1, "🍺");
+  //   } else if (event.target.id === "5") {
+  //     this.boardData.splice(5, 1, "🍺");
+  //   } else if (event.target.id === "6") {
+  //     this.boardData.splice(6, 1, "🍺");
+  //   } else if (event.target.id === "7") {
+  //     this.boardData.splice(7, 1, "🍺");
+  //   } else if (event.target.id === "8") {
+  //     this.boardData.splice(8, 1, "🍺");
+  //   }
+  // }
 
   // This method updates the board data array with player two's token. *
-  updateBoardDataForPlayer2(event) {
-    if (event.target.id === "0") {
-      this.boardData.splice(0, 1, "🍷");
-    } else if (event.target.id === "1") {
-      this.boardData.splice(1, 1, "🍷");
-    } else if (event.target.id === "2") {
-      this.boardData.splice(2, 1, "🍷");
-    } else if (event.target.id === "3") {
-      this.boardData.splice(3, 1, "🍷");
-    } else if (event.target.id === "4") {
-      this.boardData.splice(4, 1, "🍷");
-    } else if (event.target.id === "5") {
-      this.boardData.splice(5, 1, "🍷");
-    } else if (event.target.id === "6") {
-      this.boardData.splice(6, 1, "🍷");
-    } else if (event.target.id === "7") {
-      this.boardData.splice(7, 1, "🍷");
-    } else if (event.target.id === "8") {
-      this.boardData.splice(8, 1, "🍷");
-    }
-  }
-
-  // trying to figure out a method to reset game board
-  // resetGameBoard() {
-  //   if (this.player1.currentWinner === true || this.player2.currentWinner === true) {
-  //   // use timeout to clear board after a certain time
-  //   } else if (this.player1.currentWinner === false && this.player2.currentWinner === false && this.boardData.length === 9) {
-  //   // clear board
+  // updateBoardDataForPlayer2(event) {
+  //   if (event.target.id === "0") {
+  //     this.boardData.splice(0, 1, "🍷");
+  //   } else if (event.target.id === "1") {
+  //     this.boardData.splice(1, 1, "🍷");
+  //   } else if (event.target.id === "2") {
+  //     this.boardData.splice(2, 1, "🍷");
+  //   } else if (event.target.id === "3") {
+  //     this.boardData.splice(3, 1, "🍷");
+  //   } else if (event.target.id === "4") {
+  //     this.boardData.splice(4, 1, "🍷");
+  //   } else if (event.target.id === "5") {
+  //     this.boardData.splice(5, 1, "🍷");
+  //   } else if (event.target.id === "6") {
+  //     this.boardData.splice(6, 1, "🍷");
+  //   } else if (event.target.id === "7") {
+  //     this.boardData.splice(7, 1, "🍷");
+  //   } else if (event.target.id === "8") {
+  //     this.boardData.splice(8, 1, "🍷");
   //   }
   // }
 

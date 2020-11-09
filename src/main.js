@@ -15,12 +15,12 @@ var gameBoard = document.querySelector('.game-board');
 
 gameBoard.addEventListener('click', takeTurn);
 
-
 // ~~~~~~~~~~~~~ Event Handlers ~~~~~~~~~~~~~
 
 
 // Helper function for playing a turn and switching players. *
 function takeTurn() {
+  currentGame.activeGame = true;
   playTurn(event);
   currentGame.updateWinCount();
   currentGame.changePlayer();
@@ -30,7 +30,7 @@ function takeTurn() {
 
 // This function displays the winner above the board after a game is won. *
 function displayWinner() {
-  if (currentGame.player1.currentWinner === true) {
+  if (currentGame.player1.currentWinner) {
     currentPlayerMessage.innerText = `${player1.token} wins!`;
   } else if (currentGame.player2.currentWinner === true) {
     currentPlayerMessage.innerText = `${player2.token} wins!`;
@@ -45,17 +45,18 @@ function displayWinner() {
 // - checking win conditions *
 function playTurn(event) {
   if (currentGame.player1.isTurn === true) {
-    event.target.innerHTML = `<p class="token">🍺</p>`;
-    player1.moves.push(event.target.id);
-    currentGame.updateBoardDataForPlayer1(event);
-    currentGame.checkWinConditionOfPlayer1();
-  } else if (currentGame.player2.isTurn === true) {
-    event.target.innerHTML = `<p class="token">🍷</p>`;
-    player2.moves.push(event.target.id);
-    currentGame.updateBoardDataForPlayer2(event);
-    currentGame.checkWinConditionOfPlayer2();
-  }
-};
+      event.target.innerHTML = `<p class="token full">🍺</p>`;
+      player1.moves.push(event.target.id);
+      currentGame.updateBoardDataForPlayer(event, player1);
+      currentGame.checkWinConditionOfPlayerOne();
+    } else if (currentGame.player2.isTurn === true) {
+      event.target.innerHTML = `<p class="token full">🍷</p>`;
+      player2.moves.push(event.target.id);
+      currentGame.updateBoardDataForPlayer(event, player2);
+      currentGame.checkWinConditionOfPlayerTwo();
+    }
+  };
+
 
 
 // This function changes the "It's 's turn!" message above the game board
@@ -73,6 +74,7 @@ function updateCurrentPlayerMessage() {
 // displayed on the page. *
 function updateNumberOnWinCount() {
   if (player1.currentWinner === true) {
+  // retrieve win count from local storage and display that number
     beerWinCount.innerText = `${player1.wins} wins`
   } else {
     wineWinCount.innerText = `${player2.wins} wins`
@@ -82,8 +84,48 @@ function updateNumberOnWinCount() {
 
 // This function works when called in the console but I can't figure out
 // where to call it in the JS files to show a tie.
-// function checkForDraw() {
-//   if (currentGame.player1.currentWinner === false && currentGame.player2.currentWinner === false && currentGame.boardData.length === 9) {
-//     currentPlayerMessage.innerText = "It's a tie!";
-//   }
-// };
+function checkForDraw() {
+  if (currentGame.player1.currentWinner === false &&
+    currentGame.player2.currentWinner === false &&
+    currentGame.boardData.length === 9) {
+    currentPlayerMessage.innerText = "It's a tie!";
+    currentGame.activeGame = false;
+  }
+};
+
+
+function resetGameBoard() {
+  if (currentGame.activeGame === false) {
+    gameBoard.innerHTML = `
+    <div class="square top-left" id="0">
+      <p class="token empty"></p>
+    </div>
+    <div class="square top-center" id="1">
+      <p class="token empty"></p>
+    </div>
+    <div class="square top-right" id="2">
+      <p class="token empty"></p>
+    </div>
+    <div class="square middle-left" id="3">
+      <p class="token empty"></p>
+    </div>
+    <div class="square middle-center" id="4">
+      <p class="token empty"></p>
+    </div>
+    <div class="square middle-right" id="5">
+      <p class="token empty"></p>
+    </div>
+    <div class="square bottom-left" id="6">
+      <p class="token empty"></p>
+    </div>
+    <div class="square bottom-center" id="7">
+      <p class="token empty"></p>
+    </div>
+    <div class="square bottom-right" id="8">
+      <p class="token empty"></p>
+    </div>
+    `
+  }
+};
+
+setTimeout(resetGameBoard, 3000);
