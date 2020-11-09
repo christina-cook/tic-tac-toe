@@ -9,7 +9,7 @@ var currentPlayerMessage = document.querySelector('.current-player');
 var beerWinCount = document.querySelector('.beer-win-count');
 var wineWinCount = document.querySelector('.wine-win-count');
 var gameBoard = document.querySelector('.game-board');
-var boardSquares = document.querySelectorAll('.square');
+// var boardSquares = document.querySelectorAll('.square');
 
 // ~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~
 
@@ -21,6 +21,7 @@ gameBoard.addEventListener('click', takeTurn);
 // Helper function for playing a turn and switching players. *
 function takeTurn() {
   playTurn(event);
+  currentGame.updateWinCount();
   currentGame.changePlayer();
 };
 
