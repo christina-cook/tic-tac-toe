@@ -45,15 +45,15 @@ function displayWinner() {
 // - checking win conditions *
 function playTurn(event) {
   if (currentGame.player1.isTurn === true) {
-      event.target.innerHTML = `<p class="token full">🍺</p>`;
+      event.target.innerHTML = `<p class="token">🍺</p>`;
       player1.moves.push(event.target.id);
       currentGame.updateBoardDataForPlayer(event, player1);
-      currentGame.checkWinConditionOfPlayerOne();
+      currentGame.checkWinConditions(player1);
     } else if (currentGame.player2.isTurn === true) {
-      event.target.innerHTML = `<p class="token full">🍷</p>`;
+      event.target.innerHTML = `<p class="token">🍷</p>`;
       player2.moves.push(event.target.id);
       currentGame.updateBoardDataForPlayer(event, player2);
-      currentGame.checkWinConditionOfPlayerTwo();
+      currentGame.checkWinConditions(player2);
     }
   };
 
@@ -84,48 +84,49 @@ function updateNumberOnWinCount() {
 
 // This function works when called in the console but I can't figure out
 // where to call it in the JS files to show a tie.
-function checkForDraw() {
-  if (currentGame.player1.currentWinner === false &&
-    currentGame.player2.currentWinner === false &&
-    currentGame.boardData.length === 9) {
-    currentPlayerMessage.innerText = "It's a tie!";
-    currentGame.activeGame = false;
-  }
-};
 
+// function checkForDraw() {
+//   if (currentGame.boardData.length === 9 &&
+//     currentGame.player1.currentWinner === false &&
+//     currentGame.player2.currentWinner === false) {
+//     currentPlayerMessage.innerText = "It's a tie!";
+//     currentGame.activeGame = false;
+//   }
+// };
 
-function resetGameBoard() {
-  if (currentGame.activeGame === false) {
-    gameBoard.innerHTML = `
-    <div class="square top-left" id="0">
-      <p class="token empty"></p>
-    </div>
-    <div class="square top-center" id="1">
-      <p class="token empty"></p>
-    </div>
-    <div class="square top-right" id="2">
-      <p class="token empty"></p>
-    </div>
-    <div class="square middle-left" id="3">
-      <p class="token empty"></p>
-    </div>
-    <div class="square middle-center" id="4">
-      <p class="token empty"></p>
-    </div>
-    <div class="square middle-right" id="5">
-      <p class="token empty"></p>
-    </div>
-    <div class="square bottom-left" id="6">
-      <p class="token empty"></p>
-    </div>
-    <div class="square bottom-center" id="7">
-      <p class="token empty"></p>
-    </div>
-    <div class="square bottom-right" id="8">
-      <p class="token empty"></p>
-    </div>
-    `
-  }
-};
+//
+// function resetGameBoard() {
+//   if (currentGame.activeGame === false) {
+//     gameBoard.innerHTML = `
+//     <div class="square top-left" id="0">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square top-center" id="1">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square top-right" id="2">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square middle-left" id="3">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square middle-center" id="4">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square middle-right" id="5">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square bottom-left" id="6">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square bottom-center" id="7">
+//       <p class="token empty"></p>
+//     </div>
+//     <div class="square bottom-right" id="8">
+//       <p class="token empty"></p>
+//     </div>
+//     `
+//   }
+// };
 
-setTimeout(resetGameBoard, 3000);
+// setTimeout(resetGameBoard, 3000);
