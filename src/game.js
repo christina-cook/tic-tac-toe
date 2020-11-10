@@ -19,6 +19,7 @@ class Game {
     this.winConditions = winConditions;
     this.boardData = ["", "", "", "", "", "", "", "", ""];
     this.activeGame = false;
+    this.turns = 0;
   }
 
 // This method checks the win conditions based on the current player's tokens. *
@@ -47,7 +48,7 @@ class Game {
     } else if (this.boardData[2].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[6].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } 
+    }
   }
 
   // This method changes each player's win count and calls a method

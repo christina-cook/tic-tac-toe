@@ -37,6 +37,17 @@ function displayWinner() {
     currentPlayerMessage.innerText = `${player1.token} wins!`;
   } else if (currentGame.player2.currentWinner === true) {
     currentPlayerMessage.innerText = `${player2.token} wins!`;
+  } else {
+    checkForDraw();
+  }
+};
+
+
+// This function checks to see if the game ended in a tie. *
+function checkForDraw() {
+  if (currentGame.turns === 9 && currentGame.activeGame === true) {
+    currentPlayerMessage.innerText = "It's a tie!";
+    currentGame.activeGame = false;
   }
 };
 
@@ -58,7 +69,7 @@ function playTurn(event) {
       currentGame.updateBoardDataForPlayer(event, player2);
       currentGame.checkWinConditions(player2);
     }
-    // increment turn
+    currentGame.turns++;
   };
 
 
@@ -86,20 +97,7 @@ function updateNumberOnWinCount() {
 };
 
 
-// This function works when called in the console but I can't figure out
-// where to call it in the JS files to show a tie.
 
-// function checkForDraw() {
-//   // currentGame.turn
-//   if (currentGame.boardData.length === 9 &&
-//     currentGame.player1.currentWinner === false &&
-//     currentGame.player2.currentWinner === false) {
-//     currentPlayerMessage.innerText = "It's a tie!";
-//     currentGame.activeGame = false;
-//   }
-// };
-//
-//
 // function resetGameBoard() {
 //   if (currentGame.activeGame === false) {
 //     gameBoard.innerHTML = `
