@@ -11,6 +11,7 @@ var gameBoard = document.querySelector('.game-board');
 // ~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~
 
 gameBoard.addEventListener('click', takeTurn);
+window.addEventListener('load', updateNumberOnWinCount);
 
 // ~~~~~~~~~~~~~ Event Handlers ~~~~~~~~~~~~~
 
@@ -86,11 +87,11 @@ function updateCurrentPlayerMessage() {
 // This method updates the current winner's win count number
 // displayed on the page. *
 function updateNumberOnWinCount() {
-  if (player1.currentWinner === true) {
-  // retrieve win count from local storage and display that number
-    beerWinCount.innerText = `${player1.wins} wins`
-  } else {
-    wineWinCount.innerText = `${player2.wins} wins`
+  if (currentGame.activeGame === false) {
+    currentGame.player1.retrieveWinsFromStorage();
+    beerWinCount.innerText = `${player1.wins} wins`;
+    currentGame.player2.retrieveWinsFromStorage();
+    wineWinCount.innerText = `${player2.wins} wins`;
   }
 };
 
@@ -131,8 +132,10 @@ function resetGameBoard() {
     currentGame.turns = 0;
     currentGame.player1.currentWinner = false;
     currentGame.player1.isTurn = true;
+    currentGame.player1.moves = [];
     currentGame.player2.currentWinner = false;
     currentGame.player2.isTurn = false;
+    currentGame.player2.moves = [];
     setTimeout(resetPlayerMessage, 1000);
   }
 };

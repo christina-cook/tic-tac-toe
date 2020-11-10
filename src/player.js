@@ -13,13 +13,12 @@ class Player {
   }
 
   saveWinsToStorage() {
-    // add number of wins to local storage
     var savedWins = this.wins;
-    localStorage.setItem(this.id, JSON.stringify(savedWins));
+    localStorage.setItem(`${this.id}`, JSON.stringify(savedWins));
   }
 
   retrieveWinsFromStorage() {
-    // get num of wins from local storage
+    this.wins = JSON.parse(localStorage.getItem(`${this.id}`) || 0);
   }
 
 };
