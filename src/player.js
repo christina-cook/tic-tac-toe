@@ -18,7 +18,7 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    this.wins = JSON.parse(localStorage.getItem(`${this.id}`));
+    this.wins = JSON.parse(localStorage.getItem(`${this.id}`) || 0);
   }
 
 };

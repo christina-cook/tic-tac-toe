@@ -87,7 +87,7 @@ function updateCurrentPlayerMessage() {
 // This method updates the current winner's win count number
 // displayed on the page. *
 function updateNumberOnWinCount() {
-  if (player1.currentWinner === true) {
+  if (currentGame.activeGame === false) {
     currentGame.player1.retrieveWinsFromStorage();
     beerWinCount.innerText = `${player1.wins} wins`
   } else {
@@ -95,6 +95,15 @@ function updateNumberOnWinCount() {
     wineWinCount.innerText = `${player2.wins} wins`
   }
 };
+
+// if (player1.currentWinner === true) {
+//   currentGame.player1.retrieveWinsFromStorage();
+//   beerWinCount.innerText = `${player1.wins} wins`
+// } else {
+//   currentGame.player2.retrieveWinsFromStorage();
+//   wineWinCount.innerText = `${player2.wins} wins`
+// }
+// };
 
 
 // This function resets the game board after each win or tie. *
