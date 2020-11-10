@@ -8,6 +8,8 @@ main {
   height: 100vh;
 }
 
+/* ~~~~~~~~~ Main Section ~~~~~~~~ */
+
 h1 {
   font-size: 30px;
 }
@@ -15,11 +17,12 @@ h1 {
 .main-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #FFFFFF;
   width: 50%;
 }
+
+/* ~~~~~~~~~ Sidebars ~~~~~~~~ */
 
 .player-1,
 .player-2 {
@@ -34,6 +37,8 @@ h1 {
 .player-icon {
   font-size: 40px;
 }
+
+/* ~~~~~~~~~ Game Board ~~~~~~~~ */
 
 .game-board {
   display: grid;
