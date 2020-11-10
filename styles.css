@@ -5,7 +5,7 @@ body {
 
 main {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
 
 h1 {
@@ -52,8 +52,6 @@ h1 {
   width: 100px;
   background-color: white;
 }
-
-/* change cursor when you hover over a square */
 
 .token {
   font-size: 60px;
