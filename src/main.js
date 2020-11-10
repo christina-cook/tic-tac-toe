@@ -128,14 +128,7 @@ function resetGameBoard() {
       <p class="token"></p>
     </div>
     `
-    currentGame.boardData = ["", "", "", "", "", "", "", "", ""];
-    currentGame.turns = 0;
-    currentGame.player1.currentWinner = false;
-    currentGame.player1.isTurn = true;
-    currentGame.player1.moves = [];
-    currentGame.player2.currentWinner = false;
-    currentGame.player2.isTurn = false;
-    currentGame.player2.moves = [];
+    currentGame.resetGameAndPlayerProperties();
     setTimeout(resetPlayerMessage, 1000);
   }
 };

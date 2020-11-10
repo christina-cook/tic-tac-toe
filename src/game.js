@@ -1,22 +1,22 @@
 var player1 = new Player("playerOne", "🍺", true);
 var player2 = new Player("playerTwo", "🍷");
 
-var winConditions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-];
+// var winConditions = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [2, 4, 6]
+// ];
 
 class Game {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
-    this.winConditions = winConditions;
+    // this.winConditions = winConditions;
     this.boardData = ["", "", "", "", "", "", "", "", ""];
     this.activeGame = false;
     this.turns = 0;
@@ -65,14 +65,26 @@ class Game {
     }
   }
 
+  // This method resets the game and player properties back to their default values at the start of the game.
+  resetGameAndPlayerProperties() {
+    this.boardData = ["", "", "", "", "", "", "", "", ""];
+    this.turns = 0;
+    this.player1.currentWinner = false;
+    this.player1.isTurn = true;
+    this.player1.moves = [];
+    this.player2.currentWinner = false;
+    this.player2.isTurn = false;
+    this.player2.moves = [];
+  }
+
   // This method changes whose turn it is and calls a method to display the current
   // player above the board. *
   changePlayer() {
-      if (this.player1.isTurn === true) { // refactor to this.player1.isTurn
+      if (this.player1.isTurn) {
       this.player1.isTurn = false;
       this.player2.isTurn = true;
       updateCurrentPlayerMessage();
-    } else if (this.player2.isTurn === true) { // refactor to this.player2.isTurn
+    } else if (this.player2.isTurn) {
       this.player2.isTurn = false;
       this.player1.isTurn = true;
       updateCurrentPlayerMessage();
