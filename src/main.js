@@ -36,18 +36,15 @@ function displayWinner() {
   } else if (currentGame.player2.currentWinner === true) {
     currentPlayerMessage.innerText = `${player2.token} wins!`;
   } else {
-    checkForDraw();
+    currentGame.checkForDraw();
   }
   setTimeout(resetGameBoard, 3000);
 };
 
 
-// This function checks to see if the game ended in a tie. *
-function checkForDraw() {
-  if (currentGame.turns === 9 && currentGame.activeGame === true) {
-    currentPlayerMessage.innerText = "It's a tie!";
-    currentGame.activeGame = false;
-  }
+// This function updates the message to display a tie. *
+function changeMessageOnDraw() {
+  currentPlayerMessage.innerText = "It's a tie!";
 };
 
 

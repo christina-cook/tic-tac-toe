@@ -51,6 +51,14 @@ class Game {
     }
   }
 
+  // This method checks to see if the game ended in a tie. *
+  checkForDraw() {
+    if (this.turns === 9 && this.activeGame === true) {
+      this.activeGame = false
+      changeMessageOnDraw();
+    }
+  }
+
   // This method changes each player's win count and calls a method
   // to update the win count on the screen. *
   updateWinCount() {
