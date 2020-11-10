@@ -1,7 +1,4 @@
 var currentGame = new Game(player1, player2);
-// how do I instantiate a new game each time the page loads and/or a new game starts?
-// or does this already happen with a global variable?
-
 
 // ~~~~~~~~~~~~~ Query Selectors ~~~~~~~~~~~~~
 
@@ -40,6 +37,7 @@ function displayWinner() {
   } else {
     checkForDraw();
   }
+  setTimeout(resetGameBoard, 3000);
 };
 
 
@@ -97,39 +95,48 @@ function updateNumberOnWinCount() {
 };
 
 
+// This function resets the game board after each win or tie. *
+function resetGameBoard() {
+  if (currentGame.activeGame === false) {
+    gameBoard.innerHTML = `
+    <div class="square top-left" id="0">
+      <p class="token"></p>
+    </div>
+    <div class="square top-center" id="1">
+      <p class="token"></p>
+    </div>
+    <div class="square top-right" id="2">
+      <p class="token"></p>
+    </div>
+    <div class="square middle-left" id="3">
+      <p class="token"></p>
+    </div>
+    <div class="square middle-center" id="4">
+      <p class="token"></p>
+    </div>
+    <div class="square middle-right" id="5">
+      <p class="token"></p>
+    </div>
+    <div class="square bottom-left" id="6">
+      <p class="token"></p>
+    </div>
+    <div class="square bottom-center" id="7">
+      <p class="token"></p>
+    </div>
+    <div class="square bottom-right" id="8">
+      <p class="token"></p>
+    </div>
+    `
+    currentGame.boardData = ["", "", "", "", "", "", "", "", ""];
+    currentGame.turns = 0;
+    currentGame.player1.currentWinner = false;
+    currentGame.player1.isTurn = true;
+    currentGame.player2.currentWinner = false;
+    currentGame.player2.isTurn = false;
+    setTimeout(resetPlayerMessage, 1000);
+  }
+};
 
-// function resetGameBoard() {
-//   if (currentGame.activeGame === false) {
-//     gameBoard.innerHTML = `
-//     <div class="square top-left" id="0">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square top-center" id="1">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square top-right" id="2">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square middle-left" id="3">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square middle-center" id="4">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square middle-right" id="5">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square bottom-left" id="6">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square bottom-center" id="7">
-//       <p class="token"></p>
-//     </div>
-//     <div class="square bottom-right" id="8">
-//       <p class="token"></p>
-//     </div>
-//     `
-//   }
-// };
-//
-// setTimeout(resetGameBoard, 3000);
+function resetPlayerMessage() {
+  currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
+};
