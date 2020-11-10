@@ -33,7 +33,7 @@ function takeTurn() {
 function displayWinner() {
   if (currentGame.player1.currentWinner) {
     currentPlayerMessage.innerText = `${player1.token} wins!`;
-  } else if (currentGame.player2.currentWinner === true) {
+  } else if (currentGame.player2.currentWinner) {
     currentPlayerMessage.innerText = `${player2.token} wins!`;
   } else {
     currentGame.checkForDraw();
@@ -54,13 +54,13 @@ function changeMessageOnDraw() {
 // - updating board data with player tokens *
 // - checking win conditions *
 function playTurn(event) {
-  if (currentGame.player1.isTurn === true) {
-      event.target.innerHTML = `<p class="token">🍺</p>`;
+  if (currentGame.player1.isTurn) {
+      event.target.innerHTML = `<p class="token">${player1.token}</p>`;
       player1.moves.push(event.target.id);
       currentGame.updateBoardDataForPlayer(event, player1);
       currentGame.checkWinConditions(player1);
-    } else if (currentGame.player2.isTurn === true) {
-      event.target.innerHTML = `<p class="token">🍷</p>`;
+    } else if (currentGame.player2.isTurn) {
+      event.target.innerHTML = `<p class="token">${player2.token}</p>`;
       player2.moves.push(event.target.id);
       currentGame.updateBoardDataForPlayer(event, player2);
       currentGame.checkWinConditions(player2);
@@ -73,9 +73,9 @@ function playTurn(event) {
 // This function changes the "It's 's turn!" message above the game board
 // to show who the current player is. *
 function updateCurrentPlayerMessage() {
-  if (player1.isTurn === true) {
+  if (player1.isTurn) {
     currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
-  } else if (player2.isTurn === true) {
+  } else if (player2.isTurn) {
     currentPlayerMessage.innerText = `It's ${player2.token}'s turn!`;
   }
 };
@@ -84,7 +84,7 @@ function updateCurrentPlayerMessage() {
 // This method updates the current winner's win count number
 // displayed on the page. *
 function updateNumberOnWinCount() {
-  if (currentGame.activeGame === false) {
+  if (!currentGame.activeGame) {
     currentGame.player1.retrieveWinsFromStorage();
     beerWinCount.innerText = `${player1.wins} wins`;
     currentGame.player2.retrieveWinsFromStorage();
@@ -95,7 +95,7 @@ function updateNumberOnWinCount() {
 
 // This function resets the game board after each win or tie. *
 function resetGameBoard() {
-  if (currentGame.activeGame === false) {
+  if (!currentGame.activeGame) {
     gameBoard.innerHTML = `
     <div class="square top-left" id="0">
       <p class="token"></p>

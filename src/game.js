@@ -53,7 +53,7 @@ class Game {
 
   // This method checks to see if the game ended in a tie. *
   checkForDraw() {
-    if (this.turns === 9 && this.activeGame === true) {
+    if (this.turns === 9 && this.activeGame) {
       this.activeGame = false
       changeMessageOnDraw();
     }
@@ -62,11 +62,11 @@ class Game {
   // This method changes each player's win count and calls a method
   // to update the win count on the screen. *
   updateWinCount() {
-    if (this.player1.currentWinner === true) {
+    if (this.player1.currentWinner) {
       this.player1.win();
       this.player1.saveWinsToStorage();
       updateNumberOnWinCount();
-    } else if (this.player2.currentWinner === true) {
+    } else if (this.player2.currentWinner) {
       this.player2.win();
       this.player2.saveWinsToStorage();
       updateNumberOnWinCount();
