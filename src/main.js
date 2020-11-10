@@ -21,6 +21,9 @@ gameBoard.addEventListener('click', takeTurn);
 // Helper function for playing a turn and switching players. *
 function takeTurn() {
   currentGame.activeGame = true;
+  if (event.target.innerText !== "") {
+    return
+  }
   playTurn(event);
   currentGame.updateWinCount();
   currentGame.changePlayer();
@@ -55,6 +58,7 @@ function playTurn(event) {
       currentGame.updateBoardDataForPlayer(event, player2);
       currentGame.checkWinConditions(player2);
     }
+    // increment turn
   };
 
 
@@ -86,6 +90,7 @@ function updateNumberOnWinCount() {
 // where to call it in the JS files to show a tie.
 
 // function checkForDraw() {
+//   // currentGame.turn
 //   if (currentGame.boardData.length === 9 &&
 //     currentGame.player1.currentWinner === false &&
 //     currentGame.player2.currentWinner === false) {
@@ -93,40 +98,40 @@ function updateNumberOnWinCount() {
 //     currentGame.activeGame = false;
 //   }
 // };
-
+//
 //
 // function resetGameBoard() {
 //   if (currentGame.activeGame === false) {
 //     gameBoard.innerHTML = `
 //     <div class="square top-left" id="0">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square top-center" id="1">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square top-right" id="2">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square middle-left" id="3">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square middle-center" id="4">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square middle-right" id="5">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square bottom-left" id="6">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square bottom-center" id="7">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     <div class="square bottom-right" id="8">
-//       <p class="token empty"></p>
+//       <p class="token"></p>
 //     </div>
 //     `
 //   }
 // };
-
+//
 // setTimeout(resetGameBoard, 3000);
