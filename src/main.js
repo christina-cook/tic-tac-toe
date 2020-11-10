@@ -89,21 +89,11 @@ function updateCurrentPlayerMessage() {
 function updateNumberOnWinCount() {
   if (currentGame.activeGame === false) {
     currentGame.player1.retrieveWinsFromStorage();
-    beerWinCount.innerText = `${player1.wins} wins`
-  } else {
+    beerWinCount.innerText = `${player1.wins} wins`;
     currentGame.player2.retrieveWinsFromStorage();
-    wineWinCount.innerText = `${player2.wins} wins`
+    wineWinCount.innerText = `${player2.wins} wins`;
   }
 };
-
-// if (player1.currentWinner === true) {
-//   currentGame.player1.retrieveWinsFromStorage();
-//   beerWinCount.innerText = `${player1.wins} wins`
-// } else {
-//   currentGame.player2.retrieveWinsFromStorage();
-//   wineWinCount.innerText = `${player2.wins} wins`
-// }
-// };
 
 
 // This function resets the game board after each win or tie. *
@@ -142,8 +132,10 @@ function resetGameBoard() {
     currentGame.turns = 0;
     currentGame.player1.currentWinner = false;
     currentGame.player1.isTurn = true;
+    currentGame.player1.moves = [];
     currentGame.player2.currentWinner = false;
     currentGame.player2.isTurn = false;
+    currentGame.player2.moves = [];
     setTimeout(resetPlayerMessage, 1000);
   }
 };
