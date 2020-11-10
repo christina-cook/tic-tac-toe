@@ -32,9 +32,9 @@ function takeTurn() {
 // This function displays the winner above the board after a game is won. *
 function displayWinner() {
   if (currentGame.player1.currentWinner) {
-    currentPlayerMessage.innerText = `${player1.token} wins!`;
+    currentPlayerMessage.innerText = `${player1.token} won!`;
   } else if (currentGame.player2.currentWinner) {
-    currentPlayerMessage.innerText = `${player2.token} wins!`;
+    currentPlayerMessage.innerText = `${player2.token} won!`;
   } else {
     currentGame.checkForDraw();
   }
@@ -74,9 +74,9 @@ function playTurn(event) {
 // to show who the current player is. *
 function updateCurrentPlayerMessage() {
   if (player1.isTurn) {
-    currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
+    currentPlayerMessage.innerText = `It's ${player1.token}'s turn`;
   } else if (player2.isTurn) {
-    currentPlayerMessage.innerText = `It's ${player2.token}'s turn!`;
+    currentPlayerMessage.innerText = `It's ${player2.token}'s turn`;
   }
 };
 
@@ -126,10 +126,6 @@ function resetGameBoard() {
     </div>
     `
     currentGame.resetGameAndPlayerProperties();
-    setTimeout(resetPlayerMessage, 1000);
+    currentPlayerMessage.innerText = `It's ${player1.token}'s turn`;
   }
-};
-
-function resetPlayerMessage() {
-  currentPlayerMessage.innerText = `It's ${player1.token}'s turn!`;
 };
