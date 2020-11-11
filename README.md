@@ -16,6 +16,10 @@ The main learning goals of this project centered around solidifying and demonstr
 
 ![screenshot of empty board](assets/empty-board.png)
 
+### Code Architecture
+
+The JavaScript for this project was divided into three separate files. The player.js file contains the Player class which stores the data for each player in addition to methods for saving and retrieving data from local storage. The game.js file contains the primary data model for the application, including the Game class and all the methods used to play each game. The main.js file is responsible for all DOM related manipulation and connects all three files together in order to display everything on the page.
+
 ### Instructions:
 
 Playing Tic Tac Toe is easy! To play, each player takes a turn placing a token on the board by clicking an empty square. Once you get three tokens in a row, you win! If the game ends in a draw (nobody wins), the game is a tie. We keep track of your wins for you, which you'll see displayed to the left and right of the board. Feel free to end a game or close the page at any time. When you come back to play, your number of wins will still be there!
