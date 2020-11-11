@@ -1,7 +1,6 @@
 var player1 = new Player("playerOne", "🍺", true);
 var player2 = new Player("playerTwo", "🍷");
 
-
 class Game {
   constructor(player1, player2) {
     this.player1 = player1;
@@ -11,7 +10,6 @@ class Game {
     this.turns = 0;
   }
 
-// This method checks the win conditions based on the current player's tokens. *
   checkWinConditions(player) {
     if (this.boardData[0].includes(player.token) && this.boardData[1].includes(player.token) && this.boardData[2].includes(player.token)) {
       player.currentWinner = true;
@@ -40,16 +38,13 @@ class Game {
     }
   }
 
-  // This method checks to see if the game ended in a tie. *
   checkForDraw() {
     if (this.turns === 9 && this.activeGame) {
-      this.activeGame = false
+      this.activeGame = false;
       changeMessageOnDraw();
     }
   }
 
-  // This method changes each player's win count and calls a method
-  // to update the win count on the screen. *
   updateWinCount() {
     if (this.player1.currentWinner) {
       this.player1.win();
@@ -62,7 +57,6 @@ class Game {
     }
   }
 
-  // This method resets the game and player properties back to their default values at the start of the game.
   resetGameAndPlayerProperties() {
     this.boardData = ["", "", "", "", "", "", "", "", ""];
     this.turns = 0;
@@ -74,8 +68,6 @@ class Game {
     this.player2.moves = [];
   }
 
-  // This method changes whose turn it is and calls a method to display the current
-  // player above the board. *
   changePlayer() {
       if (this.player1.isTurn) {
       this.player1.isTurn = false;
@@ -88,9 +80,8 @@ class Game {
     }
   }
 
-  // This method updates the board data array with the current player's token. *
   updateBoardDataForPlayer(event, player) {
     this.boardData.splice(parseInt(event.target.id), 1, `${player.token}`);
   }
-
+  
 };
