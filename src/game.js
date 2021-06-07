@@ -11,28 +11,44 @@ class Game {
   }
 
   checkWinConditions(player) {
-    if (this.boardData[0].includes(player.token) && this.boardData[1].includes(player.token) && this.boardData[2].includes(player.token)) {
+    if (this.boardData[0].includes(player.token) &&
+    this.boardData[1].includes(player.token) &&
+    this.boardData[2].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[3].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[5].includes(player.token)) {
+    } else if (this.boardData[3].includes(player.token) &&
+    this.boardData[4].includes(player.token) &&
+    this.boardData[5].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[6].includes(player.token) && this.boardData[7].includes(player.token) && this.boardData[8].includes(player.token)) {
+    } else if (this.boardData[6].includes(player.token) &&
+    this.boardData[7].includes(player.token) &&
+    this.boardData[8].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[0].includes(player.token) && this.boardData[3].includes(player.token) && this.boardData[6].includes(player.token)) {
+    } else if (this.boardData[0].includes(player.token) &&
+    this.boardData[3].includes(player.token) &&
+    this.boardData[6].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[1].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[7].includes(player.token)) {
+    } else if (this.boardData[1].includes(player.token) &&
+    this.boardData[4].includes(player.token) &&
+    this.boardData[7].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[2].includes(player.token) && this.boardData[5].includes(player.token) && this.boardData[8].includes(player.token)) {
+    } else if (this.boardData[2].includes(player.token) &&
+    this.boardData[5].includes(player.token) &&
+    this.boardData[8].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[0].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[8].includes(player.token)) {
+    } else if (this.boardData[0].includes(player.token) &&
+    this.boardData[4].includes(player.token) &&
+    this.boardData[8].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
-    } else if (this.boardData[2].includes(player.token) && this.boardData[4].includes(player.token) && this.boardData[6].includes(player.token)) {
+    } else if (this.boardData[2].includes(player.token) &&
+    this.boardData[4].includes(player.token) &&
+    this.boardData[6].includes(player.token)) {
       player.currentWinner = true;
       this.activeGame = false;
     }
@@ -69,7 +85,7 @@ class Game {
   }
 
   changePlayer() {
-      if (this.player1.isTurn) {
+    if (this.player1.isTurn) {
       this.player1.isTurn = false;
       this.player2.isTurn = true;
       updateCurrentPlayerMessage();
@@ -83,5 +99,5 @@ class Game {
   updateBoardDataForPlayer(event, player) {
     this.boardData.splice(parseInt(event.target.id), 1, `${player.token}`);
   }
-  
+
 };
