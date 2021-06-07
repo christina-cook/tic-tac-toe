@@ -41,18 +41,18 @@ function changeMessageOnDraw() {
 
 function playTurn(event) {
   if (currentGame.player1.isTurn) {
-      event.target.innerHTML = `<p class="token">${player1.token}</p>`;
-      player1.moves.push(event.target.id);
-      currentGame.updateBoardDataForPlayer(event, player1);
-      currentGame.checkWinConditions(player1);
-    } else if (currentGame.player2.isTurn) {
-      event.target.innerHTML = `<p class="token">${player2.token}</p>`;
-      player2.moves.push(event.target.id);
-      currentGame.updateBoardDataForPlayer(event, player2);
-      currentGame.checkWinConditions(player2);
-    }
-    currentGame.turns++;
-  };
+    event.target.innerHTML = `<p class="token">${player1.token}</p>`;
+    player1.moves.push(event.target.id);
+    currentGame.updateBoardDataForPlayer(event, player1);
+    currentGame.checkWinConditions(player1);
+  } else if (currentGame.player2.isTurn) {
+    event.target.innerHTML = `<p class="token">${player2.token}</p>`;
+    player2.moves.push(event.target.id);
+    currentGame.updateBoardDataForPlayer(event, player2);
+    currentGame.checkWinConditions(player2);
+  }
+  currentGame.turns++;
+};
 
 
 function updateCurrentPlayerMessage() {
